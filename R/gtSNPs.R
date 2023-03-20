@@ -73,14 +73,14 @@ gtMarkers = function(t_bam = NULL, n_bam = NULL, build = "hg19", prefix = NULL, 
   if(is.null(op)){
     op = as.character(unlist(op_files))
     op_files = lapply(op, function(x) {
-      paste0(x, "_counts")
+      paste0(x, ".counts")
     })
     op_files = as.character(unlist(op_files))
   }else{
     if(length(op) != length(bam)){
       stop("No. of output file names must be equal to no. of BAM files.")
     }
-    op_files = paste0(op, "_counts")
+    op_files = paste0(op, ".counts")
   }
 
   if(all(file.exists(op_files))){
