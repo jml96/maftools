@@ -86,7 +86,7 @@ gtMarkers = function(t_bam = NULL, n_bam = NULL, build = "hg19", prefix = NULL, 
   if(all(file.exists(op_files))){
     warning("Counts are already generated!")
     res = lapply(seq_along(op_files), function(x){
-      data.table::fread(file = paste0(op_files[x], ".tsv"), sep = "\t", header = TRUE)
+      data.table::fread(file = paste0(op_files[x], ".txt"), sep = "\t", header = TRUE)
     })
     names(res) = op
     return(res)
@@ -143,7 +143,7 @@ gtMarkers = function(t_bam = NULL, n_bam = NULL, build = "hg19", prefix = NULL, 
   names(res) = op
 
   lapply(seq_along(res), function(idx){
-    cat(paste0(bam_idxstats[[idx]], "\n"), file = paste0(op_files[[idx]], ".tsv"))
-    data.table::fwrite(x = res[[idx]], file = paste0(op_files[[idx]], ".tsv"), append = TRUE, sep = "\t", na = "NA", quote = FALSE, col.names = TRUE)
+    cat(paste0(bam_idxstats[[idx]], "\n"), file = paste0(op_files[[idx]], ".txt"))
+    data.table::fwrite(x = res[[idx]], file = paste0(op_files[[idx]], ".txt"), append = TRUE, sep = "\t", na = "NA", quote = FALSE, col.names = TRUE)
   })
 }
